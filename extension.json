@@ -1,0 +1,142 @@
+{
+  "name": "UserNotes",
+  "namemsg": "usernotes-extensionname",
+  "version": "0.1.0",
+  "author": [
+    "Chris Rishel"
+  ],
+  "license-name": "GPL-3.0-or-later",
+  "url": "https://www.mediawiki.org/wiki/Extension:UserNotes",
+  "descriptionmsg": "usernotes-desc",
+  "type": "other",
+  "requires": {
+    "MediaWiki": ">= 1.35.0"
+  },
+  "callback": "UserNotes\\UserNotes::init",
+  "config_prefix": "wg",
+  "config": {
+    "UserNotesAddAction": {
+      "value": true
+    },
+    "UserNotesBlacklistTitles": {
+      "value": [
+        "Main_Page"
+      ]
+    },
+    "UserNotesDisableCategories": {
+      "value": true
+    },
+    "UserNotesEnabledNamespaces": {
+      "value": [
+        "Main"
+      ]
+    },
+    "UserNotesOtherNotesNamespaces": {
+      "value": [
+        "PracticeGroup"
+      ]
+    }
+  },
+  "AutoloadNamespaces": {
+    "UserNotes\\": "src/"
+  },
+  "AvailableRights": [
+    "usernotes-createall",
+    "usernotes-createown",
+    "usernotes-deleteall",
+    "usernotes-deleteown",
+    "usernotes-editall",
+    "usernotes-editown",
+    "usernotes-relinkall",
+    "usernotes-relinkown",
+    "usernotes-viewall",
+    "usernotes-viewown"
+  ],
+  "Hooks": {
+    "ApiOpenSearchSuggest": "UserNotes\\Hook\\ApiOpenSearchSuggest::callback",
+    "APIQueryAfterExecute": "UserNotes\\Hook\\APIQueryAfterExecute::callback",
+    "BeforePageDisplay": "UserNotes\\Hook\\BeforePageDisplay::callback",
+    "CategoryViewer::generateLink": "UserNotes\\Hook\\CategoryViewer_generateLink::callback",
+    "ChangesListSpecialPageQuery": "UserNotes\\Hook\\ChangesListSpecialPageQuery::callback",
+    "ContribsPager::getQueryInfo": "UserNotes\\Hook\\ContribsPager_getQueryInfo::callback",
+    "GetDoubleUnderscoreIDs": "UserNotes\\Hook\\GetDoubleUnderscoreIDs::callback",
+    "getUserPermissionsErrors": "UserNotes\\Hook\\getUserPermissionsErrors::callback",
+    "LogEventsListLineEnding": "UserNotes\\Hook\\LogEventsListLineEnding::callback",
+    "MovePageIsValidMove": "UserNotes\\Hook\\MovePageIsValidMove::callback",
+    "MultiContentSave": "UserNotes\\Hook\\MultiContentSave::callback",
+    "OutputPageParserOutput": "UserNotes\\Hook\\OutputPageParserOutput::callback",
+    "PageMoveComplete": "UserNotes\\Hook\\PageMoveComplete::callback",
+    "ParserFirstCallInit": "UserNotes\\Hook\\ParserFirstCallInit::callback",
+    "PersonalUrls": "UserNotes\\Hook\\PersonalUrls::callback",
+    "RenameUserComplete": "UserNotes\\Hook\\RenameUserComplete::callback",
+    "ShowSearchHit": "UserNotes\\Hook\\ShowSearchHit::callback",
+    "SpecialNewpagesConditions": "UserNotes\\Hook\\SpecialNewpagesConditions::callback",
+    "SkinTemplateNavigation::Universal": "UserNotes\\Hook\\SkinTemplateNavigation_Universal::callback"
+  },
+  "MessagesDirs": {
+    "UserNotes": [
+      "i18n"
+    ]
+  },
+  "ExtensionMessagesFiles": {
+    "UserNotesMagic": "src/UserNotes.i18n.magic.php"
+  },
+  "namespaces": [ {
+    "id": 8760,
+    "constant": "NS_USERNOTES",
+    "name": "UserNotes",
+    "subpages": true
+  } ],
+  "ResourceModules": {
+    "ext.userNotes": {
+      "scripts": [
+        "usernotes/usernotes.js"
+      ],
+      "styles": [
+        "usernotes/usernotes.less"
+      ],
+      "dependencies": [
+        "ext.userNotes.dataTables"
+      ],
+      "messages": [
+        "usernotes",
+        "usernotes-cancel",
+        "usernotes-create-dialog-header",
+        "usernotes-create-dialog-label",
+        "usernotes-create-dialog-help",
+        "usernotes-create-dialog-proceedbutton",
+        "usernotes-create-dialog-existingpublicarticles",
+        "usernotes-create-dialog-existingpublicarticles-noresults",
+        "usernotes-create-dialog-existingusernotesarticles",
+        "usernotes-create-dialog-existingusernotesarticles-noresults"
+      ]
+    },
+    "ext.userNotes.dataTables": {
+      "scripts": [
+        "DataTables/datatables.min.js"
+      ],
+      "styles": [
+        "DataTables/datatables.min.css",
+        "DataTables/datatables.fix.css"
+      ]
+    },
+    "ext.userNotes.searchSuggest": {
+      "scripts": [
+        "usernotes.searchSuggest/usernotes.searchSuggest.js"
+      ],
+      "styles": [],
+      "dependencies": [],
+      "messages": [
+        "usernotes-articletitle"
+      ]
+    }
+  },
+  "ResourceFileModulePaths": {
+    "localBasePath": "modules",
+    "remoteExtPath": "UserNotes/modules"
+  },
+  "SpecialPages": {
+    "MyNotes": "UserNotes\\Special\\MyNotes"
+  },
+  "manifest_version": 2
+}

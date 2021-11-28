@@ -1,0 +1,39 @@
+{
+  "@metadata": {
+    "authors": [
+      "Chris Rishel"
+    ]
+  },
+  "usernotes": "User Notes",
+  "usernotes-articletitle": "$1 (Personal notes)",
+  "usernotes-backlink": "All personal notes",
+  "usernotes-cancel": "Cancel",
+  "usernotes-extensionname": "UserNotes",
+  "usernotes-desc": "Allows the creation of secure subpages for users to store personal notes about a page",
+  "usernotes-action": "Personal notes",
+  "usernotes-create-article-button": "Create new personal notes article",
+  "usernotes-create-dialog-header": "Create new personal notes article",
+  "usernotes-create-dialog-label": "Enter the new article title <b><i>exactly</i></b> as it should appear",
+  "usernotes-create-dialog-help": "<p>The first letter of article titles must be capitalized. For consistency across the site, we recommend not capitalizing any other words in the title except for proper nouns or abbreviations.</p>",
+  "usernotes-create-dialog-proceedbutton": "Proceed to editor",
+  "usernotes-create-dialog-existingpublicarticles": "The following public articles exist. To create an article which will be linked to (and accessible from) the public article, click one of the titles below:",
+  "usernotes-create-dialog-existingpublicarticles-noresults": "No public articles exist which match your title",
+  "usernotes-create-dialog-existingusernotesarticles": "To avoid duplicated content, make sure none of these existing articles in your personal notes already cover the article you wish to write:",
+  "usernotes-create-dialog-existingusernotesarticles-noresults": "No personal notes articles exist which match your title",
+  "usernotes-error-create": "Cannot create notes: $1",
+  "usernotes-error-mainarticlenotenablednamespace": "Notes are not enabled for namespace \"$1\"",
+  "usernotes-error-mainarticletitleblacklisted": "Notes are not enabled for title \"$1\"",
+  "usernotes-error-move-fromnamespace": "Pages in the UserNotes namespace cannot be moved to another namespace",
+  "usernotes-error-move-notsubpage": "Subpages in the PracticeGroup namespace can only be moved to other subpages",
+  "usernotes-error-move-tonamespace": "Pages in other namespaces cannot be moved to the UserNotes namespace",
+  "usernotes-error-permissiondenied": "Permission denied",
+  "usernotes-linkprivate": "Private user notes article",
+  "usernotes-logprivate": "Private user notes action",
+  "usernotes-mainarticle": "Public article",
+  "usernotes-mainarticlenew": "Create public article",
+  "usernotes-move-reason-mainarticlemoved": "Main article moved",
+  "usernotes-move-reason-userrenamed": "User renamed",
+  "usernotes-personalnotes": "Personal notes",
+  "usernotes-personalnotesnew": "Create personal notes",
+  "usernotes-viewpublicarticle": "View public article"
+}

@@ -1,0 +1,32 @@
+table.dataTable thead .sorting::before,
+table.dataTable thead .sorting_asc::before,
+table.dataTable thead .sorting_desc:before,
+table.dataTable thead .sorting_asc_disabled::before,
+table.dataTable thead .sorting_desc_disabled::before {
+    display: none;
+}
+
+/* sort both */
+table.dataTable thead .sorting::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0dc"
+}
+
+/* sort asc */
+table.dataTable thead .sorting_asc::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0de"
+}
+
+/* sort desc */
+table.dataTable thead .sorting_desc::after {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0dd"
+}
+
+/* Keeps the FA icons aligned correctly in the TH */
+th .svg-inline--fa {
+    float: right;
+    margin-right: -1.2em;
+    margin-top: .25em;
+}
