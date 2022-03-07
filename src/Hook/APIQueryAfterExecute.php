@@ -55,7 +55,7 @@ class APIQueryAfterExecute {
                     && $result[ 'ns' ] == NS_USERNOTES ) {
                     $blockResult = true;
 
-                    if( $user->isLoggedIn() ) {
+                    if( $user->isRegistered() ) {
                         if( preg_match('/^' . $userNotesNsText . ':(.*)(\/|$)/U', $result[ 'title' ], $userNameMatches ) && $userNameMatches[ 1 ] == $user->getName() ) {
                             $blockResult = false;
                         }

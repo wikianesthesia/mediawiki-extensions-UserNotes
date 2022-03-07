@@ -14,7 +14,7 @@ class SkinTemplateNavigation_Universal {
         global $wgArticlePath;
         global $wgUserNotesAddAction, $wgUserNotesBlacklistTitles, $wgUserNotesEnabledNamespaces, $wgUserNotesOtherNotesNamespaces;
 
-        if( $skinTemplate->getUser()->isLoggedIn() ) {
+        if( $skinTemplate->getUser()->isRegistered() ) {
             $title = $skinTemplate->getRelevantTitle();
 
             if( $title->getNamespace() == NS_USERNOTES ) {

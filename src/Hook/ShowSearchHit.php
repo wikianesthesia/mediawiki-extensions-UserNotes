@@ -13,7 +13,7 @@ class ShowSearchHit {
         if( UserNotes::isTitleUserNotesArticle( $result->getTitle() ) ) {
             $user = RequestContext::getMain()->getUser();
 
-            if( !$user->isLoggedIn() || $user->getName() != $result->getTitle()->getRootText() ) {
+            if( !$user->isRegistered() || $user->getName() != $result->getTitle()->getRootText() ) {
                 return false;
             }
 

@@ -27,7 +27,7 @@ class MyNotes extends SpecialPage {
 
         $user = $this->getUser();
 
-        if( !$user->isLoggedIn() ) {
+        if( !$user->isRegistered() ) {
             return;
         }
 

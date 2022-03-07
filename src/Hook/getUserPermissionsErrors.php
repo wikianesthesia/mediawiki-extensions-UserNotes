@@ -11,7 +11,7 @@ class getUserPermissionsErrors {
         global $wgUserNotesEnabledNamespaces, $wgUserNotesBlacklistTitles;
 
         if( $title->getNamespace() == NS_USERNOTES ) {
-            if( !$user->isLoggedIn() ) {
+            if( !$user->isRegistered() ) {
                 $result = false;
 
                 return false;

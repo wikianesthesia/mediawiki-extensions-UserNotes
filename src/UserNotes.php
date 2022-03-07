@@ -45,7 +45,7 @@ class UserNotes {
      */
     public static function getMainArticleTitle( $userNotesTitle ) {
         if( !$userNotesTitle ) {
-            return false;
+            return null;
         }
 
         if( !$userNotesTitle instanceof Title ) {
@@ -117,7 +117,7 @@ class UserNotes {
 
         $myUser = RequestContext::getMain()->getUser();
 
-        if( !$myUser->isLoggedIn() ) {
+        if( !$myUser->isRegistered() ) {
             return false;
         }
 
@@ -143,7 +143,7 @@ class UserNotes {
             $mainArticleTitle = self::getMainArticleTitle( $mainArticleTitle );
         }
 
-        if( !$user->isLoggedIn()
+        if( !$user->isRegistered()
             || !self::canTitleHaveUserNotesArticle( $mainArticleTitle ) ) {
             return;
         }
