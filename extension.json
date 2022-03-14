@@ -124,10 +124,12 @@
       "scripts": [
         "usernotes.searchSuggest/usernotes.searchSuggest.js"
       ],
-      "styles": [],
+      "styles": [
+        "usernotes.searchSuggest/usernotes.searchSuggest.less"
+      ],
       "dependencies": [],
       "messages": [
-        "usernotes-articletitle"
+        "usernotes-personalnotes"
       ]
     }
   },

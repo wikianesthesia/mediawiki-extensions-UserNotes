@@ -9,6 +9,31 @@
             .replace( /-/g, '\\x2d' );
     }
 
+    function getUserNotesTitleHtml( prefixedTitle, query, highlightClass ) {
+        var regexpUserNotesTitle = /UserNotes:([^\/]+)\/(.*)/;
+
+        var regexpMatches = prefixedTitle.match( regexpUserNotesTitle );
+
+        if( !regexpMatches ) {
+            return false;
+        }
+
+        var displayTitle = regexpMatches[ 2 ];
+
+        var highlightRegexp = new RegExp( '(' + escapeQuery(query) + ')', 'i' );
+        displayTitle = displayTitle.replace( highlightRegexp, '<span class="' + highlightClass + '">$1</span>' );
+
+        var badgeAttribs = {
+            'class': 'badge usernotes-searchresults-badge'
+        };
+
+        var $userNotesBadge = $( '<h6>', {} ).append(
+            $( '<span>', badgeAttribs ).append( mw.msg( 'usernotes-personalnotes' ) )
+        );
+
+        return $userNotesBadge[0].innerHTML + displayTitle;
+    }
+
     function getDisplayTitle( prefixedTitle ) {
         var regexpUserNotesTitle = /UserNotes:([^\/]+)\/(.*)/;
 
@@ -28,15 +53,13 @@
                 var query = data.query;
 
                 $( '.mw-widget-titleWidget-menu > .mw-widget-titleOptionWidget a' ).each( function() {
-                    var displayTitle = getDisplayTitle( $( this ).text() );
+                    $( '.mw-widget-titleWidget-menu > .mw-widget-titleOptionWidget a' ).each( function() {
+                        var userNotesTitleHtml = getUserNotesTitleHtml( $( this ).text(), query, 'oo-ui-labelElement-label-highlight' );
 
-                    if( displayTitle ) {
-                        var highlightRegexp = new RegExp( '(' + escapeQuery(query) + ')', 'i' );
-
-                        displayTitle = displayTitle.replace( highlightRegexp, '<span class="oo-ui-labelElement-label-highlight">$1</span>' );
-
-                        $( this ).html( displayTitle );
-                    }
+                        if( userNotesTitleHtml ) {
+                            $( this ).html( userNotesTitleHtml );
+                        }
+                    } );
                 } );
             }, 1 );
         }
@@ -47,14 +70,10 @@
             var query = data.query;
 
             $( '.suggestions-result' ).each( function() {
-                var displayTitle = getDisplayTitle( $( this ).text() );
+                var userNotesTitleHtml = getUserNotesTitleHtml( $( this ).text(), query, 'highlight' );
 
-                if( displayTitle ) {
-                    var highlightRegexp = new RegExp( '(' + escapeQuery(query) + ')', 'i' );
-
-                    displayTitle = displayTitle.replace( highlightRegexp, '<span class="highlight">$1</span>' );
-
-                    $( this ).html( displayTitle );
+                if( userNotesTitleHtml ) {
+                    $( this ).html( userNotesTitleHtml );
                 }
             } );
         }

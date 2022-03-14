@@ -3,6 +3,9 @@
 
 namespace UserNotes\Hook;
 
+use BootstrapUI\BootstrapUI;
+use HtmlArmor;
+use MediaWiki\MediaWikiServices;
 use UserNotes\UserNotes;
 use RequestContext;
 use SearchResult;
@@ -10,26 +13,40 @@ use SpecialSearch;
 
 class ShowSearchHit {
     public static function callback( SpecialSearch $searchPage, SearchResult $result, $terms, &$link, &$redirect, &$section, &$extract, &$score, &$size, &$date, &$related, &$html ) {
-        if( UserNotes::isTitleUserNotesArticle( $result->getTitle() ) ) {
+        $title = $result->getTitle();
+        $titleText = $title->getText();
+
+        if( UserNotes::isTitleUserNotesArticle( $title ) ) {
             $user = RequestContext::getMain()->getUser();
 
-            if( !$user->isRegistered() || $user->getName() != $result->getTitle()->getRootText() ) {
+            if( !$user->isRegistered() || $user->getName() != $title->getRootText() ) {
                 return false;
             }
 
-            $resultTitle = $result->getTitle();
-
-            if( !$resultTitle->isSubpage() ) {
+            if( !$title->isSubpage() ) {
                 return false;
             }
 
-            $mainArticleTitle = UserNotes::getMainArticleTitle( $resultTitle );
+            $mainArticleTitle = UserNotes::getMainArticleTitle( $title );
 
             if( $mainArticleTitle ) {
-                $titleText = UserNotes::getUserNotesArticleDisplayTitle( $mainArticleTitle );
-
-                $link = preg_replace('/^(.*>)UserNotes:([\w.-]+)\/(.*)(<.*)$/', '$1' . $titleText . '$4', $link );
+                $titleText = $mainArticleTitle->getText();
             }
+
+            $searchQuery = $searchPage->getRequest()->getText('search');
+            $searchWords = explode( ' ', $searchQuery );
+
+            foreach( $searchWords as $searchWord ) {
+                $titleText = preg_replace( '/(' . $searchWord . ')/i', '<span class="searchmatch">$1</span>', $titleText );
+            }
+
+            $badgeHtml = BootstrapUI::badgeWidget( [
+                'class' => 'usernotes-searchhit-badge',
+            ], wfMessage( 'usernotes-personalnotes' )->text() );
+
+            $linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+
+            $link = $linkRenderer->makeKnownLink( $title, new HtmlArmor( $titleText . $badgeHtml ) );
         }
     }
 }
