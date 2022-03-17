@@ -53,7 +53,7 @@ class UserNotes {
         }
 
         return Title::newFromText(
-            preg_replace( '/' . $userNotesTitle->getRootText() . '\/?/', '', $userNotesTitle->getText() )
+            preg_replace( '/' . preg_quote( $userNotesTitle->getRootText() ) . '\/?/', '', $userNotesTitle->getText() )
         );
     }
 

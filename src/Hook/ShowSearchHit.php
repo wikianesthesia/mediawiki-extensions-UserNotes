@@ -37,7 +37,7 @@ class ShowSearchHit {
             $searchWords = explode( ' ', $searchQuery );
 
             foreach( $searchWords as $searchWord ) {
-                $titleText = preg_replace( '/(' . $searchWord . ')/i', '<span class="searchmatch">$1</span>', $titleText );
+                $titleText = preg_replace( '/(' . preg_quote( $searchWord ) . ')/i', '<span class="searchmatch">$1</span>', $titleText );
             }
 
             $badgeHtml = BootstrapUI::badgeWidget( [
