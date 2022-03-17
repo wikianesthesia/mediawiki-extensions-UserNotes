@@ -81,7 +81,7 @@ class UserNotes {
         # If prefixed text is provided, parse out the title
         $titleText = preg_replace( '/UserNotes:(?<username>[^\/]+)\/(?<title>.*)/', '$2', $titleText );
 
-        return wfMessage( 'usernotes-articletitle', $titleText )->plain();
+        return wfMessage( 'usernotes-articletitle', $titleText )->text();
     }
     
     public static function init() {

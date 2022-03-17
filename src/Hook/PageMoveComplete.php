@@ -73,7 +73,7 @@ class PageMoveComplete {
                                 if( $newUserNotesTitle->exists() ) {
                                     $errorDetails = 'New page already exists';
                                 } elseif( !$moveValidResult->isOK() ) {
-                                    $errorDetails = $moveValidResult->getMessage()->plain();
+                                    $errorDetails = $moveValidResult->getMessage()->text();
                                 }
 
                                 $logger->warning( 'Could not move subpage from {old} to {new}: {details}', [
