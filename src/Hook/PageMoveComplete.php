@@ -16,6 +16,8 @@ class PageMoveComplete {
         if( $old->getNamespace() === NS_USERNOTES ) {
             # Prevent infinite recursion
             return;
+        } elseif( $old->getNamespace() !== NS_MAIN || $new->getNamespace() !== NS_MAIN ) {
+            return;
         }
 
         $dbr = MediaWikiServices::getInstance()->getDBLoadBalancer()->getConnectionRef( DB_REPLICA );
