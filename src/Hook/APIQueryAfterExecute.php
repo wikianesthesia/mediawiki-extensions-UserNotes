@@ -166,8 +166,8 @@ class APIQueryAfterExecute {
             }
 
             usort( $results, function( $a, $b ) {
-                $displayTitleA = $a[ 'displaytitle' ] ?? $a[ 'title' ]->getPrefixedText();
-                $displayTitleB = $b[ 'displaytitle' ] ?? $b[ 'title' ]->getPrefixedText();
+                $displayTitleA = $a[ 'displaytitle' ] ?? $a[ 'title' ];
+                $displayTitleB = $b[ 'displaytitle' ] ?? $b[ 'title' ];
 
                 return ( $displayTitleA < $displayTitleB ) ? -1 : 1;
             } );
