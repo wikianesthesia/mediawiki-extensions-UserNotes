@@ -21,7 +21,7 @@ class BeforePageDisplay {
                 $linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
 
                 $out->setSubtitle( wfMessage( 'backlinksubtitle' )
-                    ->rawParams( $linkRenderer->makeLink( Title::newFromText( 'Special:MyNotes' ), wfMessage( 'usernotes-backlink' )->text() ) ) );
+                    ->rawParams( $linkRenderer->makeLink( Title::newFromText( 'Special:UserNotes' ), wfMessage( 'usernotes-backlink' )->text() ) ) );
             }
         }
     }

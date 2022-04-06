@@ -16,9 +16,9 @@ use UserNotes\UserNotes;
  * Orphaned pages need options to relink and delete
  */
 
-class MyNotes extends SpecialPage {
+class SpecialUserNotes extends SpecialPage {
     public function __construct() {
-        parent::__construct( 'MyNotes' );
+        parent::__construct( 'UserNotes' );
     }
 
     public function execute( $subPage ) {
@@ -119,5 +119,9 @@ class MyNotes extends SpecialPage {
         $out->addHTML( $myNotesHtml );
 
         UserNotes::wrapRenderShield( $out );
+    }
+
+    protected function getGroupName() {
+        return 'users';
     }
 }

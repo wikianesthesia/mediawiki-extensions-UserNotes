@@ -13,7 +13,7 @@ class ParserFirstCallInit {
             $title = $requestContext->getTitle();
 
             if( $title && $title->getNamespace() == NS_USERNOTES && !$title->isSubpage() ) {
-                $requestContext->getOutput()->redirect( Title::newFromText( 'Special:MyNotes' )->getFullURL() );
+                $requestContext->getOutput()->redirect( Title::newFromText( 'Special:UserNotes' )->getFullURL() );
             }
         }
     }

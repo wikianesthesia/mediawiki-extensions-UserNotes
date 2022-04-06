@@ -16,7 +16,7 @@ class PersonalUrls {
             array_slice( $personal_urls, 0, count( $personal_urls ) - 1, true ), [
                 'usernotes' => [
                     'text' => wfMessage( 'usernotes-action' )->text(),
-                    'href' => Title::newFromText( 'Special:MyNotes')->getLinkURL()
+                    'href' => Title::newFromText( 'Special:UserNotes')->getLinkURL()
             ] ],
             array_slice( $personal_urls, count( $personal_urls ) - 1, 1, true )
         );
